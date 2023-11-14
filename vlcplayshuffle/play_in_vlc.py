@@ -1,0 +1,27 @@
+import shutil
+import subprocess
+from typing import List
+
+
+def check_vlc_in_path(vlc_binary: str = "vlc") -> bool:
+    """
+    Check if VLC media player is installed and available in the system's PATH.
+
+    Args:
+        vlc_binary (str, optional): The path or name of the VLC media player binary. Default is "vlc".
+
+    Returns:
+        bool: True if VLC media player is available, False otherwise.
+    """
+    return bool(shutil.which(vlc_binary))
+
+
+def spawn_vlc(args: List[str], vlc_binary: str = "vlc"):
+    """
+    Spawn a new instance of VLC media player with the provided arguments.
+
+    Args:
+        args (List[str]): A list of arguments to be passed to VLC media player.
+        vlc_binary (str, optional): The path or name of the VLC media player binary. Default is "vlc".
+    """
+    subprocess.call([vlc_binary, *args])

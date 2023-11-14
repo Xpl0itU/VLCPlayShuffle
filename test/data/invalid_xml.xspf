@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Playlist</title>
+	<trackList/>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/01-Scandal_In_Bohemia.flv</location>
+			<duration>128228</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/02-Think_Like_Sherlock_Holmes.flv</location>
+			<duration>93860</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/03-Sherlock_Who.flv</location>
+			<duration>57925</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/04-Sherlock_Who_Solution.flv</location>
+			<duration>49583</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/05-Art_Of_Deduction.flv</location>
+			<duration>176476</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/06-Art_Of_Deduction_Solution.flv</location>
+			<duration>13580</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/07-Deduce_More.flv</location>
+			<duration>22856</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/08-Deduce_More_Solution.flv</location>
+			<duration>25292</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/09-What_Was_The_Value.flv</location>
+			<duration>74708</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/10-What_Was_The_Value_Solution.flv</location>
+			<duration>24191</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/11-Can_It_Fail_Now.flv</location>
+			<duration>87421</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/12-Can_It_Fail_Now_Solution.flv</location>
+			<duration>11812</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/13-Double_Check.flv</location>
+			<duration>223724</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>12</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/14-Still_A_Bug.flv</location>
+			<duration>34968</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>13</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/15-Still_A_Bug_Solution.flv</location>
+			<duration>68468</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>14</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/16-Fix_It_For_Good.flv</location>
+			<duration>47948</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>15</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/17-Fix_It_For_Good_Solution.flv</location>
+			<duration>75475</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>16</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/18-Dependencies.flv</location>
+			<duration>74241</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>17</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/19-Find_Dependency.flv</location>
+			<duration>80881</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>18</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/20-Find_Dependency_Solution.flv</location>
+			<duration>49917</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>19</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/21-Control_Dependency.flv</location>
+			<duration>136436</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>20</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/22-Control_Dependency_Solution.flv</location>
+			<duration>51285</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>21</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/23-Follow_The_Dependencies.flv</location>
+			<duration>109276</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>22</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/24-Backward_Slice.flv</location>
+			<duration>109176</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>23</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/25-Backward_Slice_Solution.flv</location>
+			<duration>76843</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>24</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/26-Forward_Slice.flv</location>
+			<duration>38505</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>25</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/27-Forward_Slice_Solution.flv</location>
+			<duration>39773</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>26</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/28-Dynamic_Slice.flv</location>
+			<duration>183517</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>27</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/29-Dynamic_Slice_Solution.flv</location>
+			<duration>60661</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>28</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/30-More_Slicing.flv</location>
+			<duration>170504</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>29</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/31-More_Slicing_Solution.flv</location>
+			<duration>39172</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>30</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/32-Slices_In_Real_World.flv</location>
+			<duration>115182</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>31</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/33-Dependencies_And_Scientific_Method.flv</location>
+			<duration>148815</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>32</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/34-Dependencies_And_Scientific_Method_Solution.flv</location>
+			<duration>29997</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>33</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/35-Likely_Origin.flv</location>
+			<duration>145579</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>34</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/36-Automate_This.flv</location>
+			<duration>82115</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>35</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/37-Minimum_Set_Of_Changes.flv</location>
+			<duration>156456</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>36</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/38-Minimum_Set_Of_Changes_Solution.flv</location>
+			<duration>71638</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>37</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>file:///Users/samuel/Downloads/4._Tracking_Origins/39-Path_To_Automation.flv</location>
+			<duration>56990</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>38</vlc:id>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:item tid="0"/>
+		<vlc:item tid="1"/>
+		<vlc:item tid="2"/>
+		<vlc:item tid="3"/>
+		<vlc:item tid="4"/>
+		<vlc:item tid="5"/>
+		<vlc:item tid="6"/>
+		<vlc:item tid="7"/>
+		<vlc:item tid="8"/>
+		<vlc:item tid="9"/>
+		<vlc:item tid="10"/>
+		<vlc:item tid="11"/>
+		<vlc:item tid="12"/>
+		<vlc:item tid="13"/>
+		<vlc:item tid="14"/>
+		<vlc:item tid="15"/>
+		<vlc:item tid="16"/>
+		<vlc:item tid="17"/>
+		<vlc:item tid="18"/>
+		<vlc:item tid="19"/>
+		<vlc:item tid="20"/>
+		<vlc:item tid="21"/>
+		<vlc:item tid="22"/>
+		<vlc:item tid="23"/>
+		<vlc:item tid="24"/>
+		<vlc:item tid="25"/>
+		<vlc:item tid="26"/>
+		<vlc:item tid="27"/>
+		<vlc:item tid="28"/>
+		<vlc:item tid="29"/>
+		<vlc:item tid="30"/>
+		<vlc:item tid="31"/>
+		<vlc:item tid="32"/>
+		<vlc:item tid="33"/>
+		<vlc:item tid="34"/>
+		<vlc:item tid="35"/>
+		<vlc:item tid="36"/>
+		<vlc:item tid="37"/>
+		<vlc:item tid="38"/>
+	</extension>
+</playlist>
