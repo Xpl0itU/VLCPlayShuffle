@@ -21,7 +21,6 @@ def save_xsfp_to_temp_dir(
 
 
 def shuffle_and_play(xspf_path: str):
-
     if not vlcplayshuffle.play_in_vlc.check_vlc_in_path():
         print("Error: vlc binary not in path!")
         return
