@@ -1,4 +1,4 @@
-name: PyTest
+name: Coverage
 on: push
 
 jobs:
@@ -25,4 +25,5 @@ jobs:
 
       - name: Run tests
         run: |
-            pytest
+          coverage run
+          coverage report
