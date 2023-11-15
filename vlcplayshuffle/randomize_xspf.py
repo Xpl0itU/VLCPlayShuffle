@@ -5,9 +5,7 @@ from vlcplayshuffle import parse_xspf
 from vlcplayshuffle.constants import EXTENSION_TAG, ID_TAG, TRACKLIST_TAG
 
 
-def randomize_xspf_tracks(
-    tracklist: ET.Element, seed: int | float | str | bytes | bytearray | None = None
-) -> ET.Element:
+def randomize_xspf_tracks(tracklist: ET.Element) -> ET.Element:
     """
     Randomizes the tracklist by shuffling the elements.
 
@@ -18,8 +16,6 @@ def randomize_xspf_tracks(
     Returns:
         ET.Element: The randomized tracklist.
     """
-    if seed:
-        random.seed(seed)
     randomized_tracklist = tracklist[:]
     random.shuffle(randomized_tracklist)
     for i, child in enumerate(randomized_tracklist):
