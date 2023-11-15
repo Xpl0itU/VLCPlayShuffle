@@ -6,6 +6,8 @@ from vlcplayshuffle.constants import (
     TITLE_TAG,
     LOCATION_TAG,
     DEFAULT_NAMESPACES,
+    TITLE_NOT_AVAILABLE,
+    LOCATION_NOT_AVAILABLE,
 )
 
 
@@ -56,7 +58,10 @@ def save_xspf(xspf: ET.ElementTree, path: str):
         xspf (ElementTree): The parent element of the file to save.
         path (str): The path where the XSPF file will be saved.
     """
-    xspf.write(path, encoding="utf-8", xml_declaration=True)
+    try:
+        xspf.write(path, encoding="utf-8", xml_declaration=True)
+    except (PermissionError, IsADirectoryError) as e:
+        print(f"Error saving XSPF file: {e}")
 
 
 def get_xspf_tracklist_title_location(tracklist: ET.Element) -> List[Tuple[str, str]]:
@@ -74,14 +79,12 @@ def get_xspf_tracklist_title_location(tracklist: ET.Element) -> List[Tuple[str, 
     track_titles = []
     for track in tracklist.findall(TRACK_TAG):
         title_element = track.find(TITLE_TAG)
-        title = (
-            title_element.text if title_element is not None else "Title not available"
-        )
+        title = title_element.text if title_element is not None else TITLE_NOT_AVAILABLE
         location_element = track.find(LOCATION_TAG)
         location = (
             location_element.text
             if location_element is not None
-            else "Location not available"
+            else LOCATION_NOT_AVAILABLE
         )
         track_titles.append((title, location))
     return track_titles
