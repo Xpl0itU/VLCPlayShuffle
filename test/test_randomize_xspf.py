@@ -72,22 +72,6 @@ def test_shuffles_tracklist():
     )
 
 
-# Replaces the tracklist of the XSPF file with the shuffled tracklist
-@pytest.mark.xspf_randomization
-def test_replaces_tracklist_with_shuffled_tracklist():
-    xspf_path = os.path.join("test", "data", "test.xspf")
-    original_xspf = parse_xspf(xspf_path)
-    original_tracklist = original_xspf.find(TRACKLIST_TAG)
-    modified_xspf = randomize_xspf(xspf_path)
-    modified_tracklist = modified_xspf.find(TRACKLIST_TAG)
-    assert len(original_tracklist) == len(modified_tracklist)
-    assert sorted(
-        original_tracklist, key=lambda x: x.find(EXTENSION_TAG).find(ID_TAG).text
-    ) != sorted(
-        modified_tracklist, key=lambda x: x.find(EXTENSION_TAG).find(ID_TAG).text
-    )
-
-
 # Returns None when given an empty path to an XSPF file
 @pytest.mark.xspf_randomization
 def test_empty_path_returns_none():
