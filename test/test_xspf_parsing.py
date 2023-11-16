@@ -1,5 +1,6 @@
 import os.path
 import xml.etree.ElementTree as ET
+from vlcplayshuffle.constants import TRACKLIST_TAG
 from vlcplayshuffle.parse_xspf import parse_xspf, get_xspf_tracklist_title_location
 import pytest
 
@@ -63,7 +64,7 @@ def test_returns_empty_list_if_tracklist_is_none():
 # Returns an empty list if the input tracklist has no TRACK_TAG elements
 @pytest.mark.xspf_parsing
 def test_returns_empty_list_if_tracklist_has_no_track_elements():
-    tracklist = ET.Element("tracklist")
+    tracklist = ET.Element(TRACKLIST_TAG)
 
     result = get_xspf_tracklist_title_location(tracklist)
 
