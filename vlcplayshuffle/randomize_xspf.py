@@ -11,7 +11,6 @@ def randomize_xspf_tracks(tracklist: ET.Element) -> ET.Element:
 
     Args:
         tracklist (ET.Element): The tracklist to be randomized.
-        seed (int | float | str | bytes | bytearray | None, optional): The seed value for randomization. Defaults to None.
 
     Returns:
         ET.Element: The randomized tracklist.
