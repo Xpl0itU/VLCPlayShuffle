@@ -13,7 +13,7 @@ from vlcplayshuffle.constants import (
 
 def parse_xspf(
     xspf_path: str, namespaces: List[Tuple[str, str]] = DEFAULT_NAMESPACES
-) -> ET.ElementTree | None:
+) -> ET.ElementTree:
     """
     Parse an XSPF file and return the parsed XML as an ElementTree object.
 
