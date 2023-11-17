@@ -1,6 +1,6 @@
 import shutil
 import subprocess
-from typing import List
+from typing import Iterable
 
 
 def check_vlc_in_path(vlc_binary: str = "vlc") -> bool:
@@ -16,12 +16,12 @@ def check_vlc_in_path(vlc_binary: str = "vlc") -> bool:
     return bool(shutil.which(vlc_binary))
 
 
-def spawn_vlc(args: List[str], vlc_binary: str = "vlc"):
+def spawn_vlc(args: Iterable[str], vlc_binary: str = "vlc"):
     """
     Spawn a new instance of VLC media player with the provided arguments.
 
     Args:
-        args (List[str]): A list of arguments to be passed to VLC media player.
+        args (Iterable[str]): An iterable of arguments to be passed to VLC media player.
         vlc_binary (str, optional): The path or name of the VLC media player binary. Default is "vlc".
     """
     subprocess.call([vlc_binary, *args])
