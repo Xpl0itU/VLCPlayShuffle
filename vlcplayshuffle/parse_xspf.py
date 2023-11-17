@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import Iterable, List, Tuple
 import xml.etree.ElementTree as ET
 
 from vlcplayshuffle.constants import (
@@ -12,14 +12,14 @@ from vlcplayshuffle.constants import (
 
 
 def parse_xspf(
-    xspf_path: str, namespaces: List[Tuple[str, str]] = DEFAULT_NAMESPACES
+    xspf_path: str, namespaces: Iterable[Tuple[str, str]] = DEFAULT_NAMESPACES
 ) -> ET.ElementTree:
     """
     Parse an XSPF file and return the parsed XML as an ElementTree object.
 
     Args:
         xspf_path (str): The path to the XSPF file that needs to be parsed.
-        namespaces (list of tuples, optional): A list of namespace prefixes and URIs that will be registered before parsing the XML file. Defaults to DEFAULT_NAMESPACES.
+        namespaces (iterable of tuples, optional): A list of namespace prefixes and URIs that will be registered before parsing the XML file. Defaults to DEFAULT_NAMESPACES.
 
     Returns:
         ElementTree: The parsed XML as an ElementTree object if parsing is successful, else None.
