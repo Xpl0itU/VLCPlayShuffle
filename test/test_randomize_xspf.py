@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-import os
+import os.path
 import pytest
 from vlcplayshuffle.constants import TRACKLIST_TAG, EXTENSION_TAG, ID_TAG
 from vlcplayshuffle.randomize_xspf import randomize_xspf_tracks, randomize_xspf
