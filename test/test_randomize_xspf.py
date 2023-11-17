@@ -1,9 +1,9 @@
+import xml.etree.ElementTree as ET
 import os
+import pytest
 from vlcplayshuffle.constants import TRACKLIST_TAG, EXTENSION_TAG, ID_TAG
 from vlcplayshuffle.randomize_xspf import randomize_xspf_tracks, randomize_xspf
 from vlcplayshuffle.parse_xspf import parse_xspf
-import xml.etree.ElementTree as ET
-import pytest
 
 
 # Returns a shuffled tracklist element with the same number of children as the input tracklist element

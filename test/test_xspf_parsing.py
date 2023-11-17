@@ -1,8 +1,8 @@
 import os.path
 import xml.etree.ElementTree as ET
+import pytest
 from vlcplayshuffle.constants import TRACKLIST_TAG
 from vlcplayshuffle.parse_xspf import parse_xspf, get_xspf_tracklist_title_location
-import pytest
 
 
 # The function successfully parses a valid xspf file.
