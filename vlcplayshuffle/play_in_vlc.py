@@ -24,4 +24,4 @@ def spawn_vlc(args: Iterable[str], vlc_binary: str = "vlc") -> None:
         args (Iterable[str]): An iterable of arguments to be passed to VLC media player.
         vlc_binary (str, optional): The path or name of the VLC media player binary. Default is "vlc".
     """
-    subprocess.call([vlc_binary, *args])
+    subprocess.run([vlc_binary, *args])
