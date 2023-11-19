@@ -24,7 +24,7 @@ def shuffle_and_play(xspf_path: str):
     if not vlcplayshuffle.play_in_vlc.check_vlc_in_path():
         print("Error: vlc binary not in path!")
         return
-    xspf = vlcplayshuffle.randomize_xspf.randomize_xspf(xspf_path)
+    xspf = vlcplayshuffle.randomize_xspf.randomize_xspf_file(xspf_path)
     if not xspf:
         print("Error: couldn't parse xspf file!")
         return
