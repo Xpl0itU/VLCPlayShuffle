@@ -36,7 +36,7 @@ def parse_xspf(
 
 def replace_element_children(
     element_to_replace: ET.Element, new_element_children: ET.Element
-):
+) -> None:
     """
     Replaces the children of an XML element with new elements.
     NOTE: It will only replace the children, not the parent tag itself.
@@ -50,7 +50,7 @@ def replace_element_children(
         element_to_replace.extend(new_element_children)
 
 
-def save_xspf(xspf: ET.ElementTree, path: str):
+def save_xspf(xspf: ET.ElementTree, path: str) -> None:
     """
     Saves a XSPF file at the specified path.
 
