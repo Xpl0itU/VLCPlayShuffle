@@ -5,21 +5,21 @@ from vlcplayshuffle.constants import (
     TRACK_TAG,
     TITLE_TAG,
     LOCATION_TAG,
-    DEFAULT_NAMESPACES,
+    DEFAULT_XSPF_VLC_NAMESPACES,
     TITLE_NOT_AVAILABLE,
     LOCATION_NOT_AVAILABLE,
 )
 
 
 def parse_xspf(
-    xspf_path: str, namespaces: Iterable[Tuple[str, str]] = DEFAULT_NAMESPACES
+    xspf_path: str, namespaces: Iterable[Tuple[str, str]] = DEFAULT_XSPF_VLC_NAMESPACES
 ) -> ET.ElementTree:
     """
     Parse an XSPF file and return the parsed XML as an ElementTree object.
 
     Args:
         xspf_path (str): The path to the XSPF file that needs to be parsed.
-        namespaces (Iterable[Tuple[str, str]], optional): A list of namespace prefixes and URIs that will be registered before parsing the XML file. Defaults to DEFAULT_NAMESPACES.
+        namespaces (Iterable[Tuple[str, str]], optional): A list of namespace prefixes and URIs that will be registered before parsing the XML file. Defaults to DEFAULT_XSPF_VLC_NAMESPACES.
 
     Returns:
         ET.ElementTree: The parsed XML as an ElementTree object if parsing is successful, else None.
