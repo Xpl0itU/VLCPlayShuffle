@@ -1,3 +1,4 @@
+from typing import Optional
 import random
 import xml.etree.ElementTree as ET
 
@@ -22,7 +23,7 @@ def randomize_xspf_tracks(tracklist: ET.Element) -> ET.Element:
     return randomized_tracklist
 
 
-def randomize_xspf_file(xspf_path: str) -> ET.ElementTree:
+def randomize_xspf_file(xspf_path: str) -> Optional[ET.ElementTree]:
     """
     Takes a path to a XSPF file as an input, shuffles the tracklist and returns the modified XSPF ElementTree.
 
