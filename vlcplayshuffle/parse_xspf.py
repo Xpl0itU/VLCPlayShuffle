@@ -19,10 +19,10 @@ def parse_xspf(
 
     Args:
         xspf_path (str): The path to the XSPF file that needs to be parsed.
-        namespaces (iterable of tuples, optional): A list of namespace prefixes and URIs that will be registered before parsing the XML file. Defaults to DEFAULT_NAMESPACES.
+        namespaces (Iterable[Tuple[str, str]], optional): A list of namespace prefixes and URIs that will be registered before parsing the XML file. Defaults to DEFAULT_NAMESPACES.
 
     Returns:
-        ElementTree: The parsed XML as an ElementTree object if parsing is successful, else None.
+        ET.ElementTree: The parsed XML as an ElementTree object if parsing is successful, else None.
     """
     for prefix, uri in namespaces:
         ET.register_namespace(prefix, uri)
@@ -42,7 +42,7 @@ def replace_element_children(
     NOTE: It will only replace the children, not the parent tag itself.
 
     Args:
-        element_to_replace (ElementTree): The parent element of the children to replace.
+        element_to_replace (ET.Element): The parent element of the children to replace.
         new_element_children (ET.Element): The parent element that contains the new children.
     """
     if element_to_replace and new_element_children:
@@ -55,7 +55,7 @@ def save_xspf(xspf: ET.ElementTree, path: str):
     Saves a XSPF file at the specified path.
 
     Args:
-        xspf (ElementTree): The parent element of the file to save.
+        xspf (ET.ElementTree): The parent element of the file to save.
         path (str): The path where the XSPF file will be saved.
     """
     try:
