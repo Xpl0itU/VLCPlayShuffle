@@ -2,7 +2,7 @@ import xml.etree.ElementTree as ET
 import os.path
 import pytest
 from vlcplayshuffle.constants import TRACKLIST_TAG, EXTENSION_TAG, ID_TAG
-from vlcplayshuffle.randomize_xspf import randomize_xspf_tracks, randomize_xspf
+from vlcplayshuffle.randomize_xspf import randomize_xspf_tracks, randomize_xspf_file
 from vlcplayshuffle.parse_xspf import parse_xspf
 
 
@@ -52,7 +52,7 @@ def test_returns_empty_tracklist_when_input_tracklist_is_empty():
 @pytest.mark.xspf_randomization
 def test_valid_path_returns_modified_xspf_elementtree():
     xspf_path = os.path.join("test", "data", "test.xspf")
-    modified_xspf = randomize_xspf(xspf_path)
+    modified_xspf = randomize_xspf_file(xspf_path)
     assert isinstance(modified_xspf, ET.ElementTree)
 
 
@@ -62,7 +62,7 @@ def test_shuffles_tracklist():
     xspf_path = os.path.join("test", "data", "test.xspf")
     original_xspf = parse_xspf(xspf_path)
     original_tracklist = original_xspf.find(TRACKLIST_TAG)
-    modified_xspf = randomize_xspf(xspf_path)
+    modified_xspf = randomize_xspf_file(xspf_path)
     modified_tracklist = modified_xspf.find(TRACKLIST_TAG)
     assert len(original_tracklist) == len(modified_tracklist)
     assert sorted(
@@ -76,7 +76,7 @@ def test_shuffles_tracklist():
 @pytest.mark.xspf_randomization
 def test_empty_path_returns_none():
     xspf_path = ""
-    modified_xspf = randomize_xspf(xspf_path)
+    modified_xspf = randomize_xspf_file(xspf_path)
     assert modified_xspf is None
 
 
@@ -84,7 +84,7 @@ def test_empty_path_returns_none():
 @pytest.mark.xspf_randomization
 def test_nonexistent_path_returns_none():
     xspf_path = os.path.join("test", "data", "nonexistent.xspf")
-    modified_xspf = randomize_xspf(xspf_path)
+    modified_xspf = randomize_xspf_file(xspf_path)
     assert modified_xspf is None
 
 
@@ -92,5 +92,5 @@ def test_nonexistent_path_returns_none():
 @pytest.mark.xspf_randomization
 def test_non_xspf_file_returns_none():
     xspf_path = os.path.join("test", "data", "not_xspf.txt")
-    modified_xspf = randomize_xspf(xspf_path)
+    modified_xspf = randomize_xspf_file(xspf_path)
     assert modified_xspf is None
