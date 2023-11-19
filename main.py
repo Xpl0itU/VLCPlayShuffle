@@ -3,7 +3,7 @@ import vlcplayshuffle
 import xml.etree.ElementTree as ET
 
 
-def save_xsfp_to_temp_dir(
+def save_xspf_to_temp_dir(
     xspf: ET.ElementTree,
 ) -> tempfile._TemporaryFileWrapper:
     """
@@ -33,7 +33,7 @@ def shuffle_and_play(xspf_path: str):
         vlcplayshuffle.parse_xspf.get_xspf_tracklist_title_location(tracklist_element)
     ):
         print(f"{i}. {track_name} ({track_location})")
-    temp_xspf = save_xsfp_to_temp_dir(xspf)
+    temp_xspf = save_xspf_to_temp_dir(xspf)
     vlcplayshuffle.play_in_vlc.spawn_vlc([temp_xspf.name])
 
 
