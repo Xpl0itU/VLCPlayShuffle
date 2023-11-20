@@ -1,6 +1,18 @@
+from typing import List
 import tempfile
+import glob
 import vlcplayshuffle
 import xml.etree.ElementTree as ET
+
+
+def get_xspf_files_in_current_dir() -> List[str]:
+    """
+    Gets a list of XSPF files in the current directory.
+
+    Returns:
+        List[str]: A list of files ending in .xspf in the current directory.
+    """
+    return glob.glob("*.xspf")
 
 
 def save_xspf_to_temp_dir(
@@ -38,4 +50,12 @@ def shuffle_and_play(xspf_path: str):
 
 
 if __name__ == "__main__":
-    shuffle_and_play("music.xspf")
+    import sys
+
+    xspf_files = get_xspf_files_in_current_dir()
+    if not xspf_files:
+        print("Error: no XSPF files found in the current directory")
+        sys.exit(1)
+    print(f"Found {len(xspf_files)} XSPF files in the current directory")
+    print(f"Playing {xspf_files[0]}")
+    shuffle_and_play(xspf_files[0])
