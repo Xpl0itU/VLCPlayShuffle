@@ -1,6 +1,6 @@
 # VLCPlayShuffle
 
-Takes an XSPF file in the current directory called `music.xspf`, shuffles all the items in it and plays it in VLC.
+Takes an XSPF file in the current directory, shuffles all the items in it and plays it in VLC.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ Takes an XSPF file in the current directory called `music.xspf`, shuffles all th
 
 ## Usage
 
-Currently, it's hardcoded to read a file called `music.xspf` in the current directory, no fancy CLI arguments yet.
+Currently, it scans the current directory for XSPF files and plays the first one that's been found, no fancy CLI arguments yet.
 
 Please ensure that you have the `vlc` binary in your PATH, otherwise it will fail to run.
 ```bash
