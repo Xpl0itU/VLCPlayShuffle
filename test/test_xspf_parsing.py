@@ -1,8 +1,17 @@
 import os.path
 import xml.etree.ElementTree as ET
 import pytest
-from vlcplayshuffle.constants import TRACK_TAG, TRACKLIST_TAG, TITLE_NOT_AVAILABLE, LOCATION_NOT_AVAILABLE
-from vlcplayshuffle.parse_xspf import parse_xspf, get_xspf_tracklist_title_location, replace_element_children
+from vlcplayshuffle.constants import (
+    TRACK_TAG,
+    TRACKLIST_TAG,
+    TITLE_NOT_AVAILABLE,
+    LOCATION_NOT_AVAILABLE,
+)
+from vlcplayshuffle.parse_xspf import (
+    parse_xspf,
+    get_xspf_tracklist_title_location,
+    replace_element_children,
+)
 
 
 # The function successfully parses a valid xspf file.
@@ -69,6 +78,7 @@ def test_returns_empty_list_if_tracklist_has_no_track_elements():
     result = get_xspf_tracklist_title_location(tracklist)
 
     assert result == []
+
 
 # Return default values when track title or location is not available
 @pytest.mark.xspf_parsing
