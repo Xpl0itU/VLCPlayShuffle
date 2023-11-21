@@ -1,8 +1,8 @@
 from typing import List
 import tempfile
 import glob
-import vlcplayshuffle
 import xml.etree.ElementTree as ET
+import vlcplayshuffle
 
 
 def get_xspf_files_in_current_dir() -> List[str]:
