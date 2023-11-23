@@ -1,5 +1,7 @@
 # VLCPlayShuffle
 
+by Samuel Carballo García, 1ºDAM
+
 Takes an XSPF file in the current directory, shuffles all the items in it and plays it in VLC.
 
 ## Table of Contents
