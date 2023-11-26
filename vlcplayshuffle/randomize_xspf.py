@@ -16,10 +16,20 @@ def randomize_xspf_tracks(tracklist: ET.Element) -> ET.Element:
     Returns:
         ET.Element: The randomized tracklist.
     """
+    assert isinstance(tracklist, ET.Element), "tracklist must be an Element"
+
     randomized_tracklist = tracklist[:]
     random.shuffle(randomized_tracklist)
     for i, child in enumerate(randomized_tracklist):
-        child.find(EXTENSION_TAG).find(ID_TAG).text = str(i)
+        extension_element = child.find(EXTENSION_TAG)
+        assert (
+            extension_element is not None
+        ), "Each child should have an EXTENSION_TAG element"
+        id_element = extension_element.find(ID_TAG)
+        assert (
+            id_element is not None
+        ), "Each EXTENSION_TAG element should have an ID_TAG element"
+        id_element.text = str(i)
     return randomized_tracklist
 
 
@@ -33,11 +43,19 @@ def randomize_xspf_file(xspf_path: str) -> Optional[ET.ElementTree]:
     Returns:
         ET.ElementTree: The modified XSPF ElementTree with the tracklist shuffled.
     """
+    assert isinstance(xspf_path, str), "xspf_path must be a string"
+
     xspf = parse_xspf.parse_xspf(xspf_path)
+    assert (
+        isinstance(xspf, ET.ElementTree) or xspf is None
+    ), "parse_xspf should return either None or an ElementTree"
+
     if not xspf:
         return None
     root = xspf.getroot()
     tracklist_element = root.find(TRACKLIST_TAG)
+    assert tracklist_element is not None, "root should have a TRACKLIST_TAG element"
+
     parse_xspf.replace_element_children(
         tracklist_element, randomize_xspf_tracks(tracklist_element)
     )
