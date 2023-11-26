@@ -28,7 +28,7 @@ def save_xspf_to_temp_dir(
         tempfile._TemporaryFileWrapper: A wrapper object for the temporary file that contains the saved XML ElementTree.
     """
     temp_xspf = tempfile.NamedTemporaryFile(suffix=".xspf")
-    vlcplayshuffle.parse_xspf.save_xspf(xspf, temp_xspf)
+    vlcplayshuffle.parse_xspf.save_xspf(xspf, temp_xspf.name)
     return temp_xspf
 
 
