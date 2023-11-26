@@ -24,6 +24,9 @@ def parse_xspf(
     Returns:
         ET.ElementTree: The parsed XML as an ElementTree object if parsing is successful, else None.
     """
+    assert isinstance(xspf_path, str), "xspf_path must be a string"
+    assert isinstance(namespaces, Iterable), "namespaces must be an iterable"
+
     for prefix, uri in namespaces:
         ET.register_namespace(prefix, uri)
     xspf = None
@@ -31,11 +34,13 @@ def parse_xspf(
         xspf = ET.parse(xspf_path)
     except (ET.ParseError, FileNotFoundError, IsADirectoryError):
         return None
+
+    assert xspf is not None, "xspf should not be None after successful parsing"
     return xspf
 
 
 def replace_element_children(
-    element_to_replace: ET.Element, new_element_children: ET.Element
+    element_to_replace: ET.Element, new_element_children: Iterable[ET.Element]
 ) -> None:
     """
     Replaces the children of an XML element with new elements.
@@ -45,9 +50,22 @@ def replace_element_children(
         element_to_replace (ET.Element): The parent element of the children to replace.
         new_element_children (ET.Element): The parent element that contains the new children.
     """
+    if not element_to_replace or not new_element_children:
+        return
+
+    assert isinstance(
+        element_to_replace, ET.Element
+    ), "element_to_replace must be an Element"
+    assert isinstance(
+        new_element_children, Iterable
+    ), "new_element_children must be an Iterable"
+
     if element_to_replace and new_element_children:
         element_to_replace.clear()
         element_to_replace.extend(new_element_children)
+        assert len(element_to_replace) == len(
+            new_element_children
+        ), "The element_to_replace should have the same number of children as new_element_children"
 
 
 def save_xspf(xspf: ET.ElementTree, path: str) -> None:
@@ -58,6 +76,9 @@ def save_xspf(xspf: ET.ElementTree, path: str) -> None:
         xspf (ET.ElementTree): The parent element of the file to save.
         path (str): The path where the XSPF file will be saved.
     """
+    assert isinstance(xspf, ET.ElementTree), "xspf must be an ElementTree"
+    assert isinstance(path, str), "path must be a string"
+
     try:
         xspf.write(path, encoding="utf-8", xml_declaration=True)
     except (PermissionError, IsADirectoryError) as e:
@@ -76,6 +97,9 @@ def get_xspf_tracklist_title_location(tracklist: ET.Element) -> List[Tuple[str, 
     """
     if not tracklist:
         return []
+
+    assert isinstance(tracklist, ET.Element), "tracklist must be an Element"
+
     track_titles = []
     for track in tracklist.findall(TRACK_TAG):
         title_element = track.find(TITLE_TAG)
@@ -87,4 +111,9 @@ def get_xspf_tracklist_title_location(tracklist: ET.Element) -> List[Tuple[str, 
             else LOCATION_NOT_AVAILABLE
         )
         track_titles.append((title, location))
+
+    assert all(
+        isinstance(track_title, tuple) and len(track_title) == 2
+        for track_title in track_titles
+    ), "Each item in the result should be a tuple of length 2"
     return track_titles
