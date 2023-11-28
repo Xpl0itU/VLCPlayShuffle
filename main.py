@@ -3,6 +3,7 @@ import os
 import tempfile
 import glob
 import xml.etree.ElementTree as ET
+from urllib.parse import unquote
 import vlcplayshuffle
 
 
@@ -62,9 +63,9 @@ def shuffle_and_play(xspf_path: str):
         tracklist_element
     )
     for i, (track_name, track_location) in enumerate(tracklist):
-        print(f"{i}. {track_name} ({track_location})")
+        print(f"{i}. {track_name} ({unquote(track_location)})")
     tracklist_paths = [
-        track_info[1].partition("file://")[2] for track_info in tracklist
+        unquote(track_info[1].partition("file://")[2]) for track_info in tracklist
     ]
     playlist_items_existence = check_playlist_items_exist(tracklist_paths)
     if not all(playlist_items_existence.values()):
