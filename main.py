@@ -41,10 +41,26 @@ def shuffle_and_play(xspf_path: str):
         print("Error: couldn't parse xspf file!")
         return
     tracklist_element = xspf.getroot().find(vlcplayshuffle.constants.TRACKLIST_TAG)
-    for i, (track_name, track_location) in enumerate(
-        vlcplayshuffle.parse_xspf.get_xspf_tracklist_title_location(tracklist_element)
-    ):
+    tracklist = vlcplayshuffle.parse_xspf.get_xspf_tracklist_title_location(
+        tracklist_element
+    )
+    for i, (track_name, track_location) in enumerate(tracklist):
         print(f"{i}. {track_name} ({track_location})")
+    tracklist_paths = [
+        track_info[1].partition("file://")[2] for track_info in tracklist
+    ]
+    playlist_items_existence = (
+        vlcplayshuffle.check_playlist_items_exist.check_playlist_items_exist(
+            tracklist_paths
+        )
+    )
+    if not all(playlist_items_existence.values()):
+        for track_path, exists in playlist_items_existence.items():
+            if not exists:
+                print(f"Not found: {track_path}")
+        print("Error: some items in the tracklist haven't been found")
+        return
+
     temp_xspf = save_xspf_to_temp_dir(xspf)
     vlcplayshuffle.play_in_vlc.spawn_vlc([temp_xspf.name])
 
