@@ -7,6 +7,19 @@ from urllib.parse import unquote
 import vlcplayshuffle
 
 
+def file_uri_decode(uri: str) -> str:
+    """
+    Decodes a file URI by removing the "file://" prefix and percent-encoding from the remaining string.
+
+    Args:
+        uri (str): The file URI to be decoded.
+
+    Returns:
+        str: The decoded file URI.
+    """
+    return unquote(uri.partition("file://")[2])
+
+
 def check_playlist_items_exist(track_paths: Iterable[str]) -> Dict[str, bool]:
     """
     Checks if the paths passed as argument exist.
@@ -63,10 +76,8 @@ def shuffle_and_play(xspf_path: str):
         tracklist_element
     )
     for i, (track_name, track_location) in enumerate(tracklist):
-        print(f"{i}. {track_name} ({unquote(track_location)})")
-    tracklist_paths = [
-        unquote(track_info[1].partition("file://")[2]) for track_info in tracklist
-    ]
+        print(f"{i}. {track_name} ({file_uri_decode(track_location)})")
+    tracklist_paths = [file_uri_decode(track_info[1]) for track_info in tracklist]
     playlist_items_existence = check_playlist_items_exist(tracklist_paths)
     if not all(playlist_items_existence.values()):
         for track_path, exists in playlist_items_existence.items():
