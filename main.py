@@ -1,8 +1,25 @@
-from typing import List
+from typing import List, Iterable, Dict
+import os
 import tempfile
 import glob
 import xml.etree.ElementTree as ET
 import vlcplayshuffle
+
+
+def check_playlist_items_exist(track_paths: Iterable[str]) -> Dict[str, bool]:
+    """
+    Checks if the paths passed as argument exist.
+
+    Args:
+        track_paths (Iterable[str]): An iterable of paths to check their existence.
+
+    Returns:
+        Dict[str, bool]: A dict with the path as a key and if it exists as a value.
+    """
+    final_dict = {}
+    for track_path in track_paths:
+        final_dict[track_path] = os.path.exists(track_path)
+    return final_dict
 
 
 def get_xspf_files_in_current_dir() -> List[str]:
@@ -49,11 +66,7 @@ def shuffle_and_play(xspf_path: str):
     tracklist_paths = [
         track_info[1].partition("file://")[2] for track_info in tracklist
     ]
-    playlist_items_existence = (
-        vlcplayshuffle.check_playlist_items_exist.check_playlist_items_exist(
-            tracklist_paths
-        )
-    )
+    playlist_items_existence = check_playlist_items_exist(tracklist_paths)
     if not all(playlist_items_existence.values()):
         for track_path, exists in playlist_items_existence.items():
             if not exists:
