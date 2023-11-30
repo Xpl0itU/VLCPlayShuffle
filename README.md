@@ -10,6 +10,8 @@ Takes an XSPF file in the current directory, shuffles all the items in it and pl
 - [Usage](#usage)
 - [Testing](#testing)
 - [Development Timeline](#development-timeline)
+- [Dependency Diagram](#dependency-diagram)
+- [GitFlow](#gitflow)
 - [License](#license)
 
 ## Setup
@@ -45,6 +47,16 @@ The Clockify project has been divided in several tags:
 - Parser XSPF: this was by far the most difficult part of the whole project, I've never used XML or any XML parsing libraries before, so I had to get used to its API.
 - Randomizer XSPF: randomizing the XSPF tracks was trivial thanks to the `random.shuffle` function in Python's standard library.
 - Testing: I spent a good chunk of the development adding tests to get most coverage as possible, I didn't test any function in `main.py` or any other function that wraps around a function not written that me (such as exporting to a file), because those functions are already well tested by the community and are out of my scope.
+
+## Dependency Diagram
+![Dependency diagram image](images/VLCPlayShuffle_Diagram.png)
+
+## GitFlow
+The following GitFlow has been used in this project:
+
+- Stable branch: `master`
+- Feature branches: created when a new feature is being introduced, these branches are named with the `feat/` and contain the short name of the feature in kebab case.
+- Other changes: bugfixes and performance improvements are pushed to the `develop` branch.
 
 ## License
 
