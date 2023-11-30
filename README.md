@@ -55,7 +55,7 @@ The Clockify project has been divided in several tags:
 The following GitFlow has been used in this project:
 
 - Stable branch: `master`
-- Feature branches: created when a new feature is being introduced, these branches are named with the `feat/` and contain the short name of the feature in kebab case.
+- Feature branches: created when a new feature is being introduced, these branches are named with the `feat/` prefix and contain the short name of the feature in kebab case.
 - Other changes: bugfixes and performance improvements are pushed to the `develop` branch.
 
 ## License
