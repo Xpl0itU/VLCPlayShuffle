@@ -52,14 +52,14 @@ def shuffle_and_play(
     if not xspf_path:
         print("Error: no XSPF files found!")
         print("Usage: main.py XSPF_PATH")
-        return
+        raise typer.Abort
     if not vlcplayshuffle.play_in_vlc.check_vlc_in_path():
         print("Error: vlc binary not in path!")
-        return
+        raise typer.Abort
     shuffled_playlist = vlcplayshuffle.randomize_xspf.randomize_xspf_file(xspf_path)
     if not shuffled_playlist:
         print("Error: couldn't parse xspf file!")
-        return
+        raise typer.Abort
 
     tracklist_paths = []
     for i, (track_name, track_location) in enumerate(shuffled_playlist):
@@ -73,7 +73,7 @@ def shuffle_and_play(
             if not exists:
                 print(f"Not found: {track_path}")
         print("Error: some items in the tracklist haven't been found")
-        return
+        raise typer.Abort
 
     vlcplayshuffle.play_in_vlc.spawn_vlc(tracklist_paths)
 
