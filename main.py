@@ -41,7 +41,7 @@ def get_xspf_file_in_current_dir() -> Optional[str]:
     Gets the first XSPF file found in the current directory.
 
     Returns:
-        List[str]: A list of files ending in .xspf in the current directory.
+        str: The first file ending in .xspf in the current directory.
     """
     xspf_files = glob.glob("*.xspf")
     return xspf_files[0] if xspf_files else None
