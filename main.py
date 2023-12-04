@@ -30,10 +30,7 @@ def check_playlist_items_exist(track_paths: Iterable[str]) -> Dict[str, bool]:
     Returns:
         Dict[str, bool]: A dict with the path as a key and if it exists as a value.
     """
-    final_dict = {}
-    for track_path in track_paths:
-        final_dict[track_path] = os.path.exists(track_path)
-    return final_dict
+    return {track_path: os.path.exists(track_path) for track_path in track_paths}
 
 
 def get_xspf_file_in_current_dir() -> Optional[str]:
