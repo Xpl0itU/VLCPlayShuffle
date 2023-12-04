@@ -9,8 +9,7 @@ from vlcplayshuffle.constants import (
 )
 from vlcplayshuffle.parse_xspf import (
     parse_xspf,
-    get_xspf_tracklist_title_location,
-    replace_element_children,
+    get_xspf_track_title_location,
 )
 
 
@@ -51,7 +50,7 @@ def test_non_existing_xspf_file():
 def test_returns_list_of_tuples_with_title_and_location():
     tracklist = ET.parse(os.path.join("test", "data", "test.xspf")).getroot()
 
-    result = get_xspf_tracklist_title_location(tracklist)
+    result = [get_xspf_track_title_location(track) for track in tracklist]
 
     assert isinstance(result, list)
     assert all(isinstance(item, tuple) for item in result)
@@ -60,22 +59,12 @@ def test_returns_list_of_tuples_with_title_and_location():
     assert all(isinstance(item[1], str) for item in result)
 
 
-# Returns an empty list if the input tracklist is None
-@pytest.mark.xspf_parsing
-def test_returns_empty_list_if_tracklist_is_none():
-    tracklist = None
-
-    result = get_xspf_tracklist_title_location(tracklist)
-
-    assert result == []
-
-
 # Returns an empty list if the input tracklist has no TRACK_TAG elements
 @pytest.mark.xspf_parsing
 def test_returns_empty_list_if_tracklist_has_no_track_elements():
     tracklist = ET.Element(TRACKLIST_TAG)
 
-    result = get_xspf_tracklist_title_location(tracklist)
+    result = [get_xspf_track_title_location(track) for track in tracklist]
 
     assert result == []
 
@@ -86,21 +75,5 @@ def test_return_default_values_when_track_title_or_location_not_available():
     tracklist = ET.Element(TRACKLIST_TAG)
     track = ET.Element(TRACK_TAG)
     tracklist.append(track)
-    result = get_xspf_tracklist_title_location(tracklist)
+    result = [get_xspf_track_title_location(track) for track in tracklist]
     assert result == [(TITLE_NOT_AVAILABLE, LOCATION_NOT_AVAILABLE)]
-
-
-# Doesn't replace the children of an XML element with None as the new children.
-@pytest.mark.xspf_parsing
-def test_replace_with_none_children():
-    # Create the XML element to replace
-    root = ET.Element("root")
-    child1 = ET.Element("child1")
-    child2 = ET.Element("child2")
-    root.extend([child1, child2])
-
-    # Call the function under test with None as the new children
-    replace_element_children(root, None)
-
-    # Check that the children have not been replaced
-    assert list(root) == [child1, child2]

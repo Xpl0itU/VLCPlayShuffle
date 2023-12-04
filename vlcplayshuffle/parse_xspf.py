@@ -1,8 +1,7 @@
-from typing import Iterable, List, Tuple, Optional
+from typing import Iterable, Tuple, Optional
 import xml.etree.ElementTree as ET
 
 from vlcplayshuffle.constants import (
-    TRACK_TAG,
     TITLE_TAG,
     LOCATION_TAG,
     DEFAULT_XSPF_VLC_NAMESPACES,
@@ -39,53 +38,7 @@ def parse_xspf(
     return xspf
 
 
-def replace_element_children(
-    element_to_replace: ET.Element, new_element_children: Iterable[ET.Element]
-) -> None:
-    """
-    Replaces the children of an XML element with new elements.
-    NOTE: It will only replace the children, not the parent tag itself.
-
-    Args:
-        element_to_replace (ET.Element): The parent element of the children to replace.
-        new_element_children (ET.Element): The parent element that contains the new children.
-    """
-    if not element_to_replace or not new_element_children:
-        return
-
-    assert isinstance(
-        element_to_replace, ET.Element
-    ), "element_to_replace must be an Element"
-    assert isinstance(
-        new_element_children, Iterable
-    ), "new_element_children must be an Iterable"
-
-    if element_to_replace and new_element_children:
-        element_to_replace.clear()
-        element_to_replace.extend(new_element_children)
-        assert len(element_to_replace) == len(
-            new_element_children
-        ), "The element_to_replace should have the same number of children as new_element_children"
-
-
-def save_xspf(xspf: ET.ElementTree, path: str) -> None:
-    """
-    Saves a XSPF file at the specified path.
-
-    Args:
-        xspf (ET.ElementTree): The parent element of the file to save.
-        path (str): The path where the XSPF file will be saved.
-    """
-    assert isinstance(xspf, ET.ElementTree), "xspf must be an ElementTree"
-    assert isinstance(path, str), "path must be a string"
-
-    try:
-        xspf.write(path, encoding="utf-8", xml_declaration=True)
-    except (PermissionError, IsADirectoryError) as e:
-        print(f"Error saving XSPF file: {e}")
-
-
-def get_xspf_tracklist_title_location(tracklist: ET.Element) -> List[Tuple[str, str]]:
+def get_xspf_track_title_location(track: ET.Element) -> Tuple[str, str]:
     """
     This function takes an XML tracklist as input and returns a list of tuples containing the title and location of each track in the tracklist.
 
@@ -93,27 +46,21 @@ def get_xspf_tracklist_title_location(tracklist: ET.Element) -> List[Tuple[str, 
         tracklist (ET.Element): An XML element representing the tracklist.
 
     Returns:
-        List[Tuple[str, str]]: A list of tuples containing the title and location of each track in the tracklist.
+        Tuple[str, str]: A tuple containing the title and location of the track.
     """
-    if not tracklist:
-        return []
+    assert isinstance(track, ET.Element), "track must be an Element"
 
-    assert isinstance(tracklist, ET.Element), "tracklist must be an Element"
+    title_element = track.find(TITLE_TAG)
+    title = title_element.text if title_element is not None else TITLE_NOT_AVAILABLE
+    location_element = track.find(LOCATION_TAG)
+    location = (
+        location_element.text
+        if location_element is not None
+        else LOCATION_NOT_AVAILABLE
+    )
+    track_title = title, location
 
-    track_titles = []
-    for track in tracklist.findall(TRACK_TAG):
-        title_element = track.find(TITLE_TAG)
-        title = title_element.text if title_element is not None else TITLE_NOT_AVAILABLE
-        location_element = track.find(LOCATION_TAG)
-        location = (
-            location_element.text
-            if location_element is not None
-            else LOCATION_NOT_AVAILABLE
-        )
-        track_titles.append((title, location))
-
-    assert all(
+    assert (
         isinstance(track_title, tuple) and len(track_title) == 2
-        for track_title in track_titles
-    ), "Each item in the result should be a tuple of length 2"
-    return track_titles
+    ), "track_title should be a tuple of length 2"
+    return track_title

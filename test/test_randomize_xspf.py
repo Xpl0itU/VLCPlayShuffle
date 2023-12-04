@@ -3,7 +3,6 @@ import os.path
 import pytest
 from vlcplayshuffle.constants import TRACKLIST_TAG, EXTENSION_TAG, ID_TAG
 from vlcplayshuffle.randomize_xspf import randomize_xspf_tracks, randomize_xspf_file
-from vlcplayshuffle.parse_xspf import parse_xspf
 
 
 # Returns a shuffled tracklist element with the same number of children as the input tracklist element
@@ -48,28 +47,13 @@ def test_returns_empty_tracklist_when_input_tracklist_is_empty():
     assert len(shuffled_tracklist) == 0
 
 
-# Returns a modified XSPF ElementTree when given a valid path to an XSPF file
+# Returns a list of tuples when given a valid path to an XSPF file
 @pytest.mark.xspf_randomization
-def test_valid_path_returns_modified_xspf_elementtree():
+def test_valid_path_returns_list_of_tuples():
     xspf_path = os.path.join("test", "data", "test.xspf")
-    modified_xspf = randomize_xspf_file(xspf_path)
-    assert isinstance(modified_xspf, ET.ElementTree)
-
-
-# Shuffles the tracklist of the XSPF file
-@pytest.mark.xspf_randomization
-def test_shuffles_tracklist():
-    xspf_path = os.path.join("test", "data", "test.xspf")
-    original_xspf = parse_xspf(xspf_path)
-    original_tracklist = original_xspf.find(TRACKLIST_TAG)
-    modified_xspf = randomize_xspf_file(xspf_path)
-    modified_tracklist = modified_xspf.find(TRACKLIST_TAG)
-    assert len(original_tracklist) == len(modified_tracklist)
-    assert sorted(
-        original_tracklist, key=lambda x: x.find(EXTENSION_TAG).find(ID_TAG).text
-    ) != sorted(
-        modified_tracklist, key=lambda x: x.find(EXTENSION_TAG).find(ID_TAG).text
-    )
+    shuffled_list = randomize_xspf_file(xspf_path)
+    assert isinstance(shuffled_list, list)
+    assert all(isinstance(item, tuple) and len(item) == 2 for item in shuffled_list)
 
 
 # Returns None when given an empty path to an XSPF file

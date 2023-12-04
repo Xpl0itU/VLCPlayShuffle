@@ -1,8 +1,6 @@
 from typing import List, Iterable, Dict
 import os
-import tempfile
 import glob
-import xml.etree.ElementTree as ET
 from urllib.parse import unquote
 import vlcplayshuffle
 
@@ -46,38 +44,19 @@ def get_xspf_files_in_current_dir() -> List[str]:
     return glob.glob("*.xspf")
 
 
-def save_xspf_to_temp_dir(
-    xspf: ET.ElementTree,
-) -> tempfile._TemporaryFileWrapper:
-    """
-    Saves an XML ElementTree object to a temporary file with a .xspf extension.
-
-    Args:
-        xspf (xml.etree.ElementTree.ElementTree): The XML ElementTree object to be saved as a temporary file.
-
-    Returns:
-        tempfile._TemporaryFileWrapper: A wrapper object for the temporary file that contains the saved XML ElementTree.
-    """
-    temp_xspf = tempfile.NamedTemporaryFile(suffix=".xspf")
-    vlcplayshuffle.parse_xspf.save_xspf(xspf, temp_xspf.name)
-    return temp_xspf
-
-
 def shuffle_and_play(xspf_path: str):
     if not vlcplayshuffle.play_in_vlc.check_vlc_in_path():
         print("Error: vlc binary not in path!")
         return
-    xspf = vlcplayshuffle.randomize_xspf.randomize_xspf_file(xspf_path)
-    if not xspf:
+    shuffled_playlist = vlcplayshuffle.randomize_xspf.randomize_xspf_file(xspf_path)
+    if not shuffled_playlist:
         print("Error: couldn't parse xspf file!")
         return
-    tracklist_element = xspf.getroot().find(vlcplayshuffle.constants.TRACKLIST_TAG)
-    tracklist = vlcplayshuffle.parse_xspf.get_xspf_tracklist_title_location(
-        tracklist_element
-    )
-    for i, (track_name, track_location) in enumerate(tracklist):
+    for i, (track_name, track_location) in enumerate(shuffled_playlist):
         print(f"{i}. {track_name} ({file_uri_decode(track_location)})")
-    tracklist_paths = [file_uri_decode(track_info[1]) for track_info in tracklist]
+    tracklist_paths = [
+        file_uri_decode(track_info[1]) for track_info in shuffled_playlist
+    ]
     playlist_items_existence = check_playlist_items_exist(tracklist_paths)
     if not all(playlist_items_existence.values()):
         for track_path, exists in playlist_items_existence.items():
@@ -86,8 +65,7 @@ def shuffle_and_play(xspf_path: str):
         print("Error: some items in the tracklist haven't been found")
         return
 
-    temp_xspf = save_xspf_to_temp_dir(xspf)
-    vlcplayshuffle.play_in_vlc.spawn_vlc([temp_xspf.name])
+    vlcplayshuffle.play_in_vlc.spawn_vlc(tracklist_paths)
 
 
 if __name__ == "__main__":
