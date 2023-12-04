@@ -52,11 +52,13 @@ def shuffle_and_play(xspf_path: str):
     if not shuffled_playlist:
         print("Error: couldn't parse xspf file!")
         return
+
+    tracklist_paths = []
     for i, (track_name, track_location) in enumerate(shuffled_playlist):
-        print(f"{i}. {track_name} ({file_uri_decode(track_location)})")
-    tracklist_paths = [
-        file_uri_decode(track_info[1]) for track_info in shuffled_playlist
-    ]
+        decoded_file_location = file_uri_decode(track_location)
+        tracklist_paths.append(decoded_file_location)
+        print(f"{i}. {track_name} ({decoded_file_location})")
+
     playlist_items_existence = check_playlist_items_exist(tracklist_paths)
     if not all(playlist_items_existence.values()):
         for track_path, exists in playlist_items_existence.items():
