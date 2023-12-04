@@ -1,7 +1,9 @@
-from typing import List, Iterable, Dict
+from typing import Iterable, Dict, Optional
 import os
 import glob
 from urllib.parse import unquote
+from typing_extensions import Annotated
+import typer
 import vlcplayshuffle
 
 
@@ -34,17 +36,26 @@ def check_playlist_items_exist(track_paths: Iterable[str]) -> Dict[str, bool]:
     return final_dict
 
 
-def get_xspf_files_in_current_dir() -> List[str]:
+def get_xspf_file_in_current_dir() -> Optional[str]:
     """
-    Gets a list of XSPF files in the current directory.
+    Gets the first XSPF file found in the current directory.
 
     Returns:
         List[str]: A list of files ending in .xspf in the current directory.
     """
-    return glob.glob("*.xspf")
+    xspf_files = glob.glob("*.xspf")
+    return xspf_files[0] if xspf_files else None
 
 
-def shuffle_and_play(xspf_path: str):
+def shuffle_and_play(
+    xspf_path: Annotated[
+        str, typer.Argument(default_factory=get_xspf_file_in_current_dir)
+    ]
+):
+    if not xspf_path:
+        print("Error: no XSPF files found!")
+        print("Usage: main.py XSPF_PATH")
+        return
     if not vlcplayshuffle.play_in_vlc.check_vlc_in_path():
         print("Error: vlc binary not in path!")
         return
@@ -71,12 +82,4 @@ def shuffle_and_play(xspf_path: str):
 
 
 if __name__ == "__main__":
-    import sys
-
-    xspf_files = get_xspf_files_in_current_dir()
-    if not xspf_files:
-        print("Error: no XSPF files found in the current directory")
-        sys.exit(1)
-    print(f"Found {len(xspf_files)} XSPF files in the current directory")
-    print(f"Playing {xspf_files[0]}")
-    shuffle_and_play(xspf_files[0])
+    typer.run(shuffle_and_play)

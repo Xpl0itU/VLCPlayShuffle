@@ -2,7 +2,7 @@
 
 by Samuel Carballo García, 1ºDAM
 
-Takes an XSPF file in the current directory, shuffles all the items in it and plays it in VLC.
+Takes an XSPF file, shuffles all the items in it and plays it in VLC.
 
 ## Table of Contents
 
@@ -18,15 +18,17 @@ Takes an XSPF file in the current directory, shuffles all the items in it and pl
 
 1. Clone the repository.
 2. Navigate to the project directory.
-3. (Optional) Run `pip install -U -r requirements.test.txt` to install testing dependencies.
+3. Run `pip install -U -r requirements.txt` to install the dependencies.
+4. (Optional) Run `pip install -U -r requirements.test.txt` to install testing dependencies.
 
 ## Usage
 
-Currently, it scans the current directory for XSPF files and plays the first one that's been found, no fancy CLI arguments yet.
+You can pass the path to the XSPF file as a CLI argument, by default, if no arguments are passed, it will scan the working directory for XSPF files.
 
 Please ensure that you have the `vlc` binary in your PATH, otherwise it will fail to run.
 ```bash
-python main.py
+python main.py # will scan the current directory for XSPF files
+python main.py playlist.xspf # will shuffle the playlist.xspf file
 ```
 
 ## Testing
