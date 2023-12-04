@@ -40,7 +40,7 @@ def parse_xspf(
 
 def get_xspf_track_title_location(track: ET.Element) -> Tuple[str, str]:
     """
-    This function takes an XML tracklist as input and returns a list of tuples containing the title and location of each track in the tracklist.
+    This function takes an XML tracklist as input and returns a tuple containing the title and location of the track.
 
     Args:
         tracklist (ET.Element): An XML element representing the tracklist.
