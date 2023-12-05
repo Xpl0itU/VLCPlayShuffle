@@ -1,2 +1,3 @@
+-c requirements.txt
 coverage==7.3.2
 pytest==7.4.3
